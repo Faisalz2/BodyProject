@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="list-group">
+    {% for item in BodyList %}
+    <li class="list-group-item">
+        <span class="text-info">Name : </span> <span> {{item.User.name}}</span>
+        <br>
+        <span class="text-info">age : </span> <span> {{item.User.age}}</span>
+        <br>
+    <span class="text-info">Height : </span> <span> {{item.User.Height}}</span>
+        <br>
+        <span class="text-info">Weight : </span> <span> {{item.User.Weight}}</span></li>
+        <br>
+
+        {% endfor %}
+     <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'wlc' %}">Home</a>
+        </li>
+</ul>
+{% endblock %}
