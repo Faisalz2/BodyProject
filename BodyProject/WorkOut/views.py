@@ -1,4 +1,5 @@
 from django.shortcuts import render , redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .forms import UserCreationForm, LoginForm
 from .models import Body_info
@@ -6,14 +7,23 @@ from .models import Body_info
 def wlcpag(request):
     return render(request,'base.html')
 
-def BodyList(request):
-    Bodys = Body_info.objects.all()
-    BodyList = []
-    for User in Bodys:
-        BodyList.append({'User':User})
 
-    context = {'BodyList':BodyList}
-    return render(request,'BodyList.html',context)
+def calculate_calories_view(request):
+    # Retrieve all Body_info instances from the database
+    body_info_instances = Body_info.objects.all()
+
+    # Calculate calories for each instance
+    for body_info_instance in body_info_instances:
+        body_info_instance.calories_needed = body_info_instance.calculate_calories()
+
+    # Pass the instances to the template for rendering
+    context = {
+        'body_info_instances': body_info_instances
+    }
+
+    return render(request, 'BodyList.html', context)
+
+
 
 def user_signup(request):
     if request.method == 'POST':
