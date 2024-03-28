@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <ul class="list-group">
-    {% for item in BodyList %}
+    {% for body_info_instances in body_info_instances %}
     <li class="list-group-item">
-        <span class="text-info">Name : </span> <span> {{item.User.name}}</span>
+        <span class="text-info">Name : </span> <span> {{body_info_instances.name}}</span>
         <br>
-        <span class="text-info">age : </span> <span> {{item.User.age}}</span>
+        <span class="text-info">age : </span> <span> {{ body_info_instances.age}}</span>
         <br>
-    <span class="text-info">Height : </span> <span> {{item.User.Height}}</span>
+    <span class="text-info">Height : </span> <span> {{ body_info_instances.Height}}</span>
         <br>
-        <span class="text-info">Weight : </span> <span> {{item.User.Weight}}</span></li>
+        <span class="text-info">Weight : </span> <span> {{body_info_instances.Weight}}</span>
+        <br>
+    <span class="text-info">calories : </span> <span> {{body_info_instances.calories_needed}}</span></li>
         <br>
 
         {% endfor %}
      <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'wlc' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'wlc' %}"style = 'color:white;'>Home </a>
         </li>
+{% include "Footer.html" %}
 </ul>
 {% endblock %}
