@@ -1,4 +1,5 @@
 from django.shortcuts import render , redirect
+from django.shortcuts import render ,HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .forms import UserCreationForm, LoginForm
@@ -24,6 +25,29 @@ def calculate_calories_view(request):
     return render(request, 'BodyList.html', context)
 
 
+def Create(request):
+    if request.method == "POST":
+        name = request.POST.get('name', '')
+        Height = request.POST.get('Height', '')
+        Weight = request.POST.get('Weight', '')
+        age = request.POST.get('age', '')
+
+
+        # basic validation
+        if name and Height and Weight and age:
+            Create = Body_info(
+                name=name,
+                Height=Height,
+                Weight=Weight,
+                age=age
+
+            )
+            Create.save()
+            return HttpResponse("<h1>Thanks</h1>")
+        else:
+            return HttpResponse("<h1>Error: Please fill in all required fields</h1>")
+
+    return render(request, 'players.html')
 
 def user_signup(request):
     if request.method == 'POST':
