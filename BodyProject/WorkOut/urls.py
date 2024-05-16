@@ -8,4 +8,6 @@ path('login/', views.user_login, name='login'),
 path('signup/', views.user_signup, name='signup'),
 path('logout/', views.user_logout, name='logout'),
 path('pl/', views.Create, name='pl'),
+path('pl/', views.update, name='pl'),
+path('pld/',views.delete,name='pld'),
 ]
