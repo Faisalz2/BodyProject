@@ -49,6 +49,36 @@ def Create(request):
 
     return render(request, 'players.html')
 
+def update(request, player_id):
+    # Retrieve the player instance
+    player = get_object_or_404(Body_info, pk=player_id)
+
+    if request.method == "POST":
+        
+        name = request.POST.get('name', '')
+        height = request.POST.get('Height', '')
+        weight = request.POST.get('Weight', '')
+        age = request.POST.get('age', '')
+
+        # Update the player instance with the new data
+        player.name = name
+        player.Height = height
+        player.Weight = weight
+        player.age = age
+
+        # Save the updated player instance
+        player.save()
+
+        return HttpResponse("<h1>Player information updated successfully</h1>")
+    return render(request, 'players.html')
+
+def delete(request):
+            body_info_instances = Body_info.objects.all()
+            body_info_instances.delete()
+            return HttpResponse("<h1>All data deleted successfully</h1>")
+
+
+
 def user_signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
