@@ -30,7 +30,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="w">WorkOut</a>
+    <a class="navbar-brand" href="{% url 'wlc' %}">WorkOut</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +40,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'wlc' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'pl' %}">Players</a>
+          <a class="nav-link" href="{% url 'd' %}">Players</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'pl' %}"> Update Players</a>
@@ -49,7 +49,7 @@
           <a class="nav-link" href="{% url 'pld' %}">Delete Players</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Forms</a>
+          <a class="nav-link" href="{% url 'pl' %}">Forms</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{% url 'signup' %}">Signup</a>
